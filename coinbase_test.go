@@ -15,5 +15,7 @@ func TestRequest_good(t *testing.T) {
 		Name: "Abhi Test1",
 	})
 
-	t.Log(button.HTML(""))
+	if button == nil {
+		t.Fatal("Button is nil")
+	}
 }
