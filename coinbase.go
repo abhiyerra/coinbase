@@ -9,8 +9,17 @@ import (
 	"os"
 )
 
+var CoinbaseApiKey string = ""
+
 func apiKey() string {
-	return os.Getenv("COINBASE_API_KEY")
+	if CoinbaseApiKey == "" {
+		CoinbaseApiKey = os.Getenv("COINBASE_API_KEY")
+		if CoinbaseApiKey == "" {
+			return ""
+		}
+	}
+
+	return CoinbaseApiKey
 }
 
 type ButtonRequest struct {
