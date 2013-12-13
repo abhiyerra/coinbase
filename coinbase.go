@@ -9,7 +9,10 @@ import (
 	"os"
 )
 
-var CoinbaseApiKey string = ""
+var (
+	CoinbaseApiKey         string
+	CoinbaseCallbackSecret string
+)
 
 func apiKey() string {
 	if CoinbaseApiKey == "" {
@@ -60,7 +63,7 @@ type Button struct {
 	Response *ButtonResponse
 }
 
-func buttonApiUrl() string {
+func (b *Button) ApiUrl() string {
 	return fmt.Sprintf("https://coinbase.com/api/v1/buttons?api_key=%s", apiKey())
 }
 
@@ -71,7 +74,7 @@ func GetButton(button_request *ButtonRequest) (b *Button) {
 
 	js, _ := json.Marshal(b.Request)
 
-	resp, err := http.Post(buttonApiUrl(), "application/json", bytes.NewBuffer(js))
+	resp, err := http.Post(b.ApiUrl(), "application/json", bytes.NewBuffer(js))
 	if err != nil {
 		// handle error
 		fmt.Printf("err")
