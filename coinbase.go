@@ -36,7 +36,17 @@ type ButtonRequest struct {
 	CallbackUrl  string `json:"callback_url,omitempty"`
 	Description  string `json:"description,omitempty"`
 	Style        string `json:"style,omitempty"`
+	Text         string `json:"text,omitempty"`
 	IncludeEmail bool   `json:"include_email,omitempty"`
+
+	VariablePrice bool `json:"variable_price,omitempty"`
+	ChoosePrice   bool `json:"choose_price,omitempty"`
+
+	Price1 string `json:"price1,omitempty"`
+	Price2 string `json:"price2,omitempty"`
+	Price3 string `json:"price3,omitempty"`
+	Price4 string `json:"price4,omitempty"`
+	Price5 string `json:"price5,omitempty"`
 }
 
 type ButtonResponse struct {
