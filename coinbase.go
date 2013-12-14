@@ -25,6 +25,8 @@ func apiKey() string {
 	return CoinbaseApiKey
 }
 
+// Documentation of the required params:
+// https://coinbase.com/api/doc/1.0/buttons/create.html
 type ButtonRequest struct {
 	// Required
 	Name             string `json:"name"`
